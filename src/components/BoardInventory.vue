@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue';
 import BoardPopup from './BoardPopup.vue';
 
 const cells = Array.from({ length: 25 }, (_, index) => index + 1);
-// const baseUrl = 'https://romansukharev.github.io/app-test_for_front';
+
 
 interface Item {
   id: number,
@@ -20,21 +20,14 @@ const is_popup_visible = ref(false);
 
 const loadItems = () => {
   const savedItems = localStorage.getItem('inventoryItems');
-  var baseUrl = '';
-
-  if (window.location.hostname === 'romansukharev.github.io') {
-    baseUrl = 'https://romansukharev.github.io/app-test_for_front';
-  } else {
-    baseUrl = ''; // Базовый URL для локальной среды
-  }
 
   if (savedItems) {
     items.value = JSON.parse(savedItems);
   } else {
     items.value = [
-      { id: 0, idx: 1, name: 'item_1', src: `${baseUrl}/src/img/item_1.png`, count: 4 },
-      { id: 1, idx: 2, name: 'item_2', src: `${baseUrl}/src/img/item_2.png`, count: 2 },
-      { id: 2, idx: 3, name: 'item_3', src: `${baseUrl}/src/img/item_3.png`, count: 5 }
+      { id: 0, idx: 1, name: 'item_1', src: '/src/img/item_1.png', count: 4 },
+      { id: 1, idx: 2, name: 'item_2', src: '/src/img/item_2.png', count: 2 },
+      { id: 2, idx: 3, name: 'item_3', src: '/src/img/item_3.png', count: 5 }
     ];
   }
 };
@@ -111,8 +104,8 @@ onMounted(() => {
         <div class="Board__inventorySectionSkeleton is-loading">
           <h2 v-for="n in 7" :key="n" :class="`Board__inventorySectionSkeleton_${n}`"></h2>
         </div>
-      </div>      
-      <!-- <img src="/src/assets/img/item_1.png" alt="" style="position: absolute;"> -->
+      </div>
+      <!-- <img src="../img/item_1.png" alt="" style="position: absolute;"> -->
       <div class="Board__inventorySectionRight">
         <div v-for="cell in cells" :key="cell" class="grid-item" @drop="onDrop($event, cell)" @dragover="onDragOver">
 
