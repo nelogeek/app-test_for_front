@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue';
 import BoardPopup from './BoardPopup.vue';
 
 const cells = Array.from({ length: 25 }, (_, index) => index + 1);
+// const baseUrl = 'https://romansukharev.github.io/app-test_for_front';
 
 interface Item {
   id: number,
@@ -19,13 +20,21 @@ const is_popup_visible = ref(false);
 
 const loadItems = () => {
   const savedItems = localStorage.getItem('inventoryItems');
+  var baseUrl = '';
+
+  if (window.location.hostname === 'romansukharev.github.io') {
+    baseUrl = 'https://romansukharev.github.io/app-test_for_front';
+  } else {
+    baseUrl = ''; // Базовый URL для локальной среды
+  }
+
   if (savedItems) {
     items.value = JSON.parse(savedItems);
   } else {
     items.value = [
-      { id: 0, idx: 1, name: 'item_1', src: '/src/assets/img/item_1.png', count: 4 },
-      { id: 1, idx: 2, name: 'item_2', src: '/src/assets/img/item_2.png', count: 2 },
-      { id: 2, idx: 3, name: 'item_3', src: '/src/assets/img/item_3.png', count: 5 }
+      { id: 0, idx: 1, name: 'item_1', src: `${baseUrl}/src/img/item_1.png`, count: 4 },
+      { id: 1, idx: 2, name: 'item_2', src: `${baseUrl}/src/img/item_2.png`, count: 2 },
+      { id: 2, idx: 3, name: 'item_3', src: `${baseUrl}/src/img/item_3.png`, count: 5 }
     ];
   }
 };
@@ -98,12 +107,12 @@ onMounted(() => {
   <article class="Board" @click.self="closePopup">
     <div class="Board__inventorySection">
       <div class="Board__inventorySectionLeft">
-        <img src="/src/assets/img/Img Blur.png" alt="" class="Board__image">
+        <img src="/src/img/Img Blur.png" alt="" class="Board__image">
         <div class="Board__inventorySectionSkeleton is-loading">
           <h2 v-for="n in 7" :key="n" :class="`Board__inventorySectionSkeleton_${n}`"></h2>
         </div>
-      </div>
-<!-- <img src="/src/assets/img/item_1.png" alt=""> -->
+      </div>      
+      <!-- <img src="/src/assets/img/item_1.png" alt="" style="position: absolute;"> -->
       <div class="Board__inventorySectionRight">
         <div v-for="cell in cells" :key="cell" class="grid-item" @drop="onDrop($event, cell)" @dragover="onDragOver">
 
@@ -125,7 +134,7 @@ onMounted(() => {
       <div class="Board__inventorySectionBottom">
         <div class="Board__inventorySectionBottomItems">
           <div class="Board__inventorySectionBottomСross">
-            <img src="/src/assets/img/Vector.png" alt="">
+            <img src="/src/img/Vector.png" alt="">
           </div>
           <div class="Board__inventorySectionBottomSkeleton is-loading">
             <h2></h2>
@@ -278,7 +287,7 @@ onMounted(() => {
 }
 
 .grid-item-image[draggable="true"] {
-  cursor: url('/src/assets/img/cursor_hoverpng.png'), auto;
+  cursor: url('/src/img/cursor_hoverpng.png'), auto;
 }
 
 .Board__inventorySectionCount {
