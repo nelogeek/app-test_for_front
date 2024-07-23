@@ -40,7 +40,7 @@ const deleteItemContinue = () => {
     <div class="BoardPopup__content">
 
       <button class="BoardPopup__closeBtn" @click="closePopup">
-        <img src="/src/img/Vector.png" alt="">
+        <img src="/src/assets/img/Vector.png" alt="">
       </button>
 
       <div class="BoardPopup__imageWrapper">
