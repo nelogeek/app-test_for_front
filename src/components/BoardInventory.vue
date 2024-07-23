@@ -104,7 +104,6 @@ onMounted(() => {
         </div>
       </div>
 
-      <img src="/src/img/item_1.png" alt="">
       <div class="Board__inventorySectionRight">
         <div v-for="cell in cells" :key="cell" class="grid-item" @drop="onDrop($event, cell)" @dragover="onDragOver">
 
