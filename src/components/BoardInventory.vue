@@ -23,9 +23,9 @@ const loadItems = () => {
     items.value = JSON.parse(savedItems);
   } else {
     items.value = [
-      { id: 0, idx: 1, name: 'item_1', src: '/public/img/item_1.png', count: 4 },
-      { id: 1, idx: 2, name: 'item_2', src: '/public/img/item_2.png', count: 2 },
-      { id: 2, idx: 3, name: 'item_3', src: '/public/img/item_3.png', count: 5 }
+      { id: 0, idx: 1, name: 'item_1', src: '/app-test_for_front/public/img/item_1.png', count: 4 },
+      { id: 1, idx: 2, name: 'item_2', src: '/app-test_for_front/public/img/item_2.png', count: 2 },
+      { id: 2, idx: 3, name: 'item_3', src: '/app-test_for_front/public/img/item_3.png', count: 5 }
     ];
   }
 };
