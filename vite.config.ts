@@ -13,5 +13,7 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  },
+  // Конфигурация статических ресурсов
+  assetsInclude: ['**/*.png']
 })
