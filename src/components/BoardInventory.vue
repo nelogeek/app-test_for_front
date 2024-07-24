@@ -4,6 +4,7 @@ import BoardPopup from './BoardPopup.vue';
 
 const cells = Array.from({ length: 25 }, (_, index) => index + 1);
 
+
 interface Item {
   id: number,
   idx: number,
@@ -19,6 +20,7 @@ const is_popup_visible = ref(false);
 
 const loadItems = () => {
   const savedItems = localStorage.getItem('inventoryItems');
+
   if (savedItems) {
     items.value = JSON.parse(savedItems);
   } else {
@@ -103,7 +105,7 @@ onMounted(() => {
           <h2 v-for="n in 7" :key="n" :class="`Board__inventorySectionSkeleton_${n}`"></h2>
         </div>
       </div>
-
+      <!-- <img src="../img/item_1.png" alt="" style="position: absolute;"> -->
       <div class="Board__inventorySectionRight">
         <div v-for="cell in cells" :key="cell" class="grid-item" @drop="onDrop($event, cell)" @dragover="onDragOver">
 
