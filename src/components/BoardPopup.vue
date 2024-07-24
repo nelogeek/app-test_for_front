@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, defineProps, defineEmits } from 'vue';
 
-
 const is_hidden = ref(false);
 const delete_item_hidden = ref(false);
 
